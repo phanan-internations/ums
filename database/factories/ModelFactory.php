@@ -12,13 +12,31 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
-
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+
+$factory->define(App\Models\Administrator::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'username' => $faker->unique()->userName,
+        'password' => bcrypt($faker->password),
+        'api_token' => str_random(),
+    ];
+});
+
+$factory->define(\App\Models\Membership::class, function (Faker\Generator $faker) {
+    return [
+        'group_id' => factory(\App\Models\Group::class)->create()->id,
+        'user_id' => factory(\App\Models\User::class)->create()->id,
+    ];
+});
+
