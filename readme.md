@@ -25,7 +25,9 @@ From the root of the installation folder:
     yarn prod
     php artisan serve
     ```
-1. Now visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser and log in with username `admin` and password `password`.
+1. Now visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser and log in with username `admin` and password `password`. You should see something like this:
+
+<img src="https://github.com/phanan-internations/ums/raw/master/artifacts/screenshot.png" width="100%" alt="Screenshot">
 
 ## Known Issues
 
